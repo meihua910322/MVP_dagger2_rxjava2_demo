@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--  不透明度
+          95%->F2  90%->E5  85%->D8  80%->CC  75%->BF
+          70%->B2  65%->A5  60%->99  55%->8C  50%->7F
+          45%->72  40%->66  35%->59  30%->4C  25%->3F
+          20%->33  15%->21  10%->19  5%->0C    0%->00
+    -->
+
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorGapLine">#cccccc</color>
+    <color name="colorManatee">#999999</color>
+    <color name="colorDarkCerulean">#104080</color>
+    <color name="colorTaupe">#333333</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorYellow">#ffff00</color>
+    <color name="weak_blue">#33104080</color>
+    <!--通用背景色-->
+    <color name="common_bg">@color/white</color>
+    <!--通用一级标题的颜色-->
+    <color name="common_h1">#212121</color>
+    <!--通用分割线细-->
+    <color name="common_divider_narrow">#E3E3E3</color>
+    <!--通用触摸背景色-->
+    <color name="common_touch_bg">#E3E3E3</color>
+
+    <!--登录输入框-->
+    <color name="login_input_hint">#99ffffff</color>
+    <color name="login_input_bg">#66ffffff</color>
+    <!--输入框-->
+    <color name="input_hint">#cccccc</color>
+    <color name="input_text">#333333</color>
+    <color name="input_stroke">#eeeeee</color>
+    <!--光标颜色-->
+    <color name="colorCursor">#0074ee</color>
+
+    <color name="btn_normal">#0074EE</color>
+    <color name="btn_disable">#330074EE</color>
+    <color name="btn_press">#660074EE</color>
+
+
+</resources>

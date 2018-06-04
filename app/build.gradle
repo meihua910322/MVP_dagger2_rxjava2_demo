@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream()
+properties.load(inputStream)
+
+def API_DEVELOP_HOST = properties.getProperty('API_DEVELOP_HOST')
+def SOCKET_DEVELOP_HOST = properties.getProperty('SOCKET_DEVELOP_HOST')
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "cn.meihua.mvp_dagger2_rxjava2_demo"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "FILE_PROVIDER", "${FILE_PROVIDER}")
+    }
+    buildTypes {
+        //开发环境
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_DEVELOP_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_DEVELOP_HOST}"
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_DEVELOP_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_DEVELOP_HOST}"
+        }
+
+        //生产环境
+        production {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "String", "API_HOST", "${API_PRODUCTION_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_PRODUCTION_HOST}"
+        }
+
+        //预发布环境
+        preview {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_PREVIEW_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_PREVIEW_HOST}"
+        }
+
+        //测试环境
+        ptesting {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_TESTING_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_TESTING_HOST}"
+        }
+
+        //DEMO环境
+        pdemo {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_DEMO_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_DEMO_HOST}"
+        }
+
+        //压测环境
+        pabtest {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "String", "API_HOST", "${API_ABTEST_HOST}"
+            buildConfigField "String", "SOCKET_HOST", "${SOCKET_ABTEST_HOST}"
+        }
+    }
+
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:0.5'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
+
+    //okhttp3
+    compile "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+    compile "com.squareup.okio:okio:$okio_version"
+    //retrofit
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version"
+    //rxjava
+    compile "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    compile "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    //eventbus
+    compile "org.greenrobot:eventbus:$eventbus_version"
+    //glide
+    compile "com.github.bumptech.glide:glide:$glide_version"
+    //dagger
+    compile "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compile 'com.pnikosis:materialish-progress:1.0'
+    kapt "com.android.databinding:compiler:$databinding_version"
+
+    //permission
+    compile 'com.github.dfqin:grantor:2.3.0'
+
+}

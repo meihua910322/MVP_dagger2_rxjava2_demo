@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--  path 属性用于指定当前子元素所代表目录下需要共享的子目录名称。
+    注意：path 属性值不能使用具体的独立文件名，只能是目录名。-->
+
+    <!-- name 属性用于给 path 属性所指定的子目录名称取一个别名。
+    后续生成 content:// URI 时，会使用这个别名代替真实目录名。
+    这样做的目的，很显然是为了提高安全性。-->
+
+    <!--对应Context.getFilesDir()-->
+    <files-path
+        name="files-path"
+        path="cache" />
+    <!--对应Environment.getExternalStorageDirectory()-->
+    <external-path
+        name="external-path"
+        path="cache" />
+    <!--对应Context.getExternalCacheDir()-->
+    <external-cache-path
+        name="external-cache-path"
+        path="cache" />
+    <cache-path
+        name="cache-path"
+        path="cache" />
+    <root-path
+        name="root"
+        path="" />
+</paths>
